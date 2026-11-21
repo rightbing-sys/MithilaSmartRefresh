@@ -1,4 +1,5 @@
 package com.mithila.smartrefresh
+import android.app.Activity
 
 import android.app.ActivityManager
 import android.content.Context
