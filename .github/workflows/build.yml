@@ -15,9 +15,14 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - run: gradle assembleDebug --console=plain
+      - name: Build Debug APK
+        run: |
+          gradle assembleDebug --console=plain > build.log 2>&1 || {
+            echo "=== EXACT ERROR LINES ==="
+            grep -E "e: |FAILURE:|What went wrong|Caused by:|Execution failed" -A 3 build.log || tail -n 35 build.log
+            exit 1
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: MithilaSmartRefresh-APK
           path: app/build/outputs/apk/
-          if-no-files-found: warn
