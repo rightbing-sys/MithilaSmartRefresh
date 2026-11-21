@@ -608,7 +608,7 @@ fun DiaryScreen(navController: NavHostController) {
     LaunchedEffect(Unit) { loadEntries() }
 
     val speechLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == ComponentActivity.Activity.RESULT_OK) {
+        if (result.resultCode == ComponentActivity.android.app.Activity.RESULT_OK) {
             val spoken = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.firstOrNull()
             if (!spoken.isNullOrEmpty()) {
                 diaryText = if (diaryText.isEmpty()) spoken else "$diaryText $spoken"
