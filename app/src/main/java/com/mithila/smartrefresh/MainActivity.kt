@@ -187,8 +187,11 @@ fun DashboardScreen(navController: NavHostController) {
     }
 }
 
+        MithilaFeedbackSection()
+    }
 @Composable
 fun RefreshScreen(navController: NavHostController) {
+@Composable
     val context = LocalContext.current
     var isRefreshing by remember { mutableStateOf(false) }
     var refreshProgress by remember { mutableFloatStateOf(0.0f) }
