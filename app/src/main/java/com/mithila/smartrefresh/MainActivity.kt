@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
                 )
             ) {
                 Surface(modifier = Modifier.fillMaxSize(), color = MidnightCharcoal) {
-                    MithilaAppNavigation()
+                    var showBanner by remember { mutableStateOf(true) }; if (showBanner) { MithilaFullScreenSplash { showBanner = false } } else { MithilaAppNavigation() }
                 }
             }
         }
@@ -98,7 +98,7 @@ fun MithilaAppNavigation() {
         composable(Routes.BATTERY_RAM) { BatteryRamScreen(navController) }
         composable(Routes.APP_MONITOR) { MonitorScreen(navController) }
         composable(Routes.HEALTH_REPORT) { HealthReportScreen(navController) }
-        composable(Routes.CALENDAR) { CalendarScreen(navController) }
+        composable(Routes.CALENDAR) { KalnirnayMithilaCalendar() }
         composable(Routes.DIARY) { DiaryScreen(navController) }
     }
 }
@@ -151,7 +151,7 @@ fun DashboardScreen(navController: NavHostController) {
         val gridItems = listOf(
             GridFeature("वन टैप रिफ्रेश", Icons.Default.Autorenew, Routes.ONE_TAP_REFRESH, AccentAmber),
             GridFeature("UPI रेडी चेक", Icons.Default.Security, Routes.UPI_CHECK, AccentGreen),
-            GridFeature("कैलेंडर (2026-30)", Icons.Default.CalendarMonth, Routes.CALENDAR, ChampagneGold),
+            GridFeature("कैलेंडर (2026-31)", Icons.Default.CalendarMonth, Routes.CALENDAR, ChampagneGold),
             GridFeature("वॉयस डायरी", Icons.Default.Mic, Routes.DIARY, ChampagneGold),
             GridFeature("स्टोरेज एनालाइज़र", Icons.Default.Storage, Routes.STORAGE, Color.Cyan),
             GridFeature("नोटिफिकेशन मैनेजर", Icons.Default.NotificationsActive, Routes.NOTIFICATION, AccentRed),
