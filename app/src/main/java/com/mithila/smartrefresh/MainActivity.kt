@@ -183,12 +183,11 @@ fun DashboardScreen(navController: NavHostController) {
                     }
                 }
             }
+            item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) { MithilaFeedbackSection() }
         }
     }
 }
 
-        MithilaFeedbackSection()
-    }
 @Composable
 fun RefreshScreen(navController: NavHostController) {
 @Composable
